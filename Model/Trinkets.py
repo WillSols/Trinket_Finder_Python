@@ -1,6 +1,8 @@
 from typing import List
 
 class Trinket:
+    trinket_counter = 0
+
     def __init__(self, name: str, trinket_id: int, primary_attr: str, secondary_attr: str, 
                  drop_location: str, rarity: str, description: str):
         self.name = name
@@ -16,6 +18,12 @@ class Trinkets:
         self._trinkets = []
 
     def create_trinket(self, data: Trinket) -> Trinket:
+        name = name
+        primary_attribute = primary_attribute
+        secondary_attribute = secondary_attribute
+        drop_location = drop_location
+        rarity = rarity
+        description = description
         self._trinkets.append(data)
         return data
 
