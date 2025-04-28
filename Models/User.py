@@ -1,6 +1,6 @@
 import secrets
 import hashlib
-from Character import Character
+from Models.Character import Character
 
 class User:
     _id_counter = 1
@@ -44,12 +44,7 @@ class User:
     #Métodos
     def create_character(self, character: Character) -> bool:
         if len(self._characters) < 3:
-            character_id = character_id
-            name = name
-            char_class = char_class
-            specialization = specialization
-            role = role
-            UserId = UserId
+            self._characters.append(character)
             return True
         return False
 
@@ -71,3 +66,11 @@ class User:
     def login(self, input_username: str, input_password: str) -> bool:
         hashed_input = hashlib.sha256(input_password.encode()).hexdigest()
         return self._username == input_username and self._password == hashed_input
+
+    def to_dictionary(self):
+        return {
+            "username": self._username,
+            "user_id": self._user_id,
+            "characters": [{"id": char.character_id, "name": char.name} 
+                        for char in self._characters]
+        }
